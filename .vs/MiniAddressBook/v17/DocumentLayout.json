@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|solutionrelative:MiniAddressBook\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|c:\\users\\krist\\onedrive\\desktop\\mini adrress book\\miniaddressbook\\miniaddressbook\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|solutionrelative:miniaddressbook\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,10 +23,6 @@
       "RelativeMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|solutionrelative:MiniAddressBook\\App.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|solutionrelative:MiniAddressBook\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3882E4F0-38F5-4ADD-A2C9-EB533E85DE00}|MiniAddressBook\\MiniAddressBook.csproj|solutionrelative:MiniAddressBook\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +50,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\App.xaml.cs",
               "RelativeDocumentMoniker": "MiniAddressBook\\App.xaml.cs",
               "ToolTip": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\App.xaml.cs",
               "RelativeToolTip": "MiniAddressBook\\App.xaml.cs",
-              "ViewState": "AQIAAAkAAAAAnpmZmZkMwBAAAAA9AAAA",
+              "ViewState": "AQIAAAsAAACAoWZmZmbGvxAAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-04T02:02:41.085Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MiniAddressBook\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml",
+              "RelativeToolTip": "MiniAddressBook\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-03T23:15:14.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "MiniAddressBook\\Data\\AppDbContext.cs",
@@ -75,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Contact.cs",
               "DocumentMoniker": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\Models\\Contact.cs",
               "RelativeDocumentMoniker": "MiniAddressBook\\Models\\Contact.cs",
@@ -87,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\App.config",
               "RelativeDocumentMoniker": "MiniAddressBook\\App.config",
@@ -96,17 +108,6 @@
               "ViewState": "AQIAAAsAAAAAAAAAAAAAwCEAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-03-03T23:18:26.85Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MiniAddressBook\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\krist\\OneDrive\\Desktop\\Mini Adrress Book\\MiniAddressBook\\MiniAddressBook\\MainWindow.xaml",
-              "RelativeToolTip": "MiniAddressBook\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-03T23:15:14.344Z"
             },
             {
               "$type": "Document",

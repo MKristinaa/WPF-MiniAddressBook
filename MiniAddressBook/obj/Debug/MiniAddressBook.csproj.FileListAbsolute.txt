@@ -37,7 +37,6 @@ C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBoo
 C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\MainWindow.g.cs
 C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\App.g.cs
 C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\MiniAddressBook_MarkupCompile.cache
-C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\MiniAddressBook_MarkupCompile.lref
 C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\MainWindow.baml
 C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\MiniAddressBook.g.resources
 C:\Users\krist\OneDrive\Desktop\Mini Adrress Book\MiniAddressBook\MiniAddressBook\obj\Debug\MiniAddressBook.Properties.Resources.resources
