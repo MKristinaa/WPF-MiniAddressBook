@@ -12,6 +12,7 @@ namespace MiniAddressBook
     {
         private AppDbContext _context;
         private ObservableCollection<Contact> _contact;
+        private ObservableCollection<Contact> _allContacts;
         private Contact _selectedContact;
 
         public MainWindow()
@@ -22,12 +23,37 @@ namespace MiniAddressBook
             LoadContacts();
 
             btnSave.IsEnabled = false;
+            txtSearch.TextChanged += TxtSearch_TextChanged;
         }
 
         private void LoadContacts()
         {
-            _contact = new ObservableCollection<Contact>(_context.Contacts.ToList());
+            _allContacts = new ObservableCollection<Contact>(_context.Contacts.ToList());
+            _contact = new ObservableCollection<Contact>(_allContacts);
             dgContacts.ItemsSource = _contact;
+        }
+
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filter = txtSearch.Text.ToLower().Trim();
+            if (string.IsNullOrEmpty(filter))
+            {
+                _contact.Clear();
+                foreach (var c in _allContacts)
+                    _contact.Add(c);
+            }
+            else
+            {
+                var filtered = _allContacts.Where(c =>
+                    (c.FirstName != null && c.FirstName.ToLower().Contains(filter)) ||
+                    (c.LastName != null && c.LastName.ToLower().Contains(filter)) ||
+                    (c.Email != null && c.Email.ToLower().Contains(filter))
+                ).ToList();
+
+                _contact.Clear();
+                foreach (var c in filtered)
+                    _contact.Add(c);
+            }
         }
 
         private void txtFields_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,6 +105,7 @@ namespace MiniAddressBook
             _context.Contacts.Add(newContact);
             _context.SaveChanges();
 
+            _allContacts.Add(newContact);
             _contact.Add(newContact);
 
             MessageBox.Show("Contact added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -204,6 +231,7 @@ namespace MiniAddressBook
                 _context.Contacts.Remove(_selectedContact);
                 _context.SaveChanges();
 
+                _allContacts.Remove(_selectedContact);
                 _contact.Remove(_selectedContact);
 
                 MessageBox.Show("Contact deleted successfully!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
