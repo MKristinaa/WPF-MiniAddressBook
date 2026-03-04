@@ -4,7 +4,7 @@
         Title="Mini Address Book" Height="550" Width="900"
         WindowStartupLocation="CenterScreen" >
 
-    <Grid Background="#f4f4f4" Margin="5">
+    <Grid Background="#f4f4f4">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
