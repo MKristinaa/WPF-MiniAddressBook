@@ -1,0 +1,51 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Backup & temp files
+*~ 
+*.tmp
+*.temp
+*.log
+
+# SQL Server / LocalDB
+*.mdf
+*.ldf
+
+# Publish output
+*.Publish.xml
+
+# Others
+*.dbmdl
+*.dbproj.user
