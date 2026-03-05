@@ -50,17 +50,19 @@ namespace MiniAddressBook.ViewModels
         public string SearchText
         {
             get => _searchText;
-            set { _searchText = value; OnPropertyChanged(nameof(SearchText)); FilterContacts(); }
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged(nameof(SearchText));
+                FilterContacts();
+            }
         }
-
-
-        public ICommand AddCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand DeleteCommand { get; }
-        public ICommand EditCommand { get; }
 
+        public ICommand ClearFormCommand { get; }
 
-        private bool _canSave = false;
+        private bool _canSave;
         public bool CanSave { get => _canSave; set { _canSave = value; OnPropertyChanged(nameof(CanSave)); } }
 
         public MainViewModel()
@@ -70,82 +72,72 @@ namespace MiniAddressBook.ViewModels
             AllContacts = new ObservableCollection<Contact>(_context.Contacts.ToList());
             Contacts = new ObservableCollection<Contact>(AllContacts);
 
-            AddCommand = new RelayCommand(_ => AddContact());
             SaveCommand = new RelayCommand(_ => SaveContact(), _ => CanSave);
-            DeleteCommand = new RelayCommand(_ => DeleteContact());
-            EditCommand = new RelayCommand(_ => EditContact());
+
+            DeleteCommand = new RelayCommand(_ => DeleteContact(), _ => true);
+
+            ClearFormCommand = new RelayCommand(_ => ClearForm(), _ => true);
+
+            UpdateSaveState();
         }
 
-        private void AddContact()
+        private void LoadSelectedContact()
         {
             if (SelectedContact != null)
             {
-                SelectedContact = null;
-                ClearForm();
-                MessageBox.Show("Selection cleared. You can now add a new contact.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                FirstName = SelectedContact.FirstName;
+                LastName = SelectedContact.LastName;
+                Email = SelectedContact.Email;
+                Phone = SelectedContact.Phone;
+                City = SelectedContact.City;
             }
-
-            if (string.IsNullOrWhiteSpace(FirstName) || string.IsNullOrWhiteSpace(LastName) || string.IsNullOrWhiteSpace(Email))
+            else
             {
-                MessageBox.Show("First Name, Last Name, and Email are required.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                ClearFormFields();
             }
-
-            try
-            {
-                var addr = new MailAddress(Email);
-                if (addr.Address != Email)
-                {
-                    MessageBox.Show("Email format is invalid.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Email format is invalid.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var contact = new Contact
-            {
-                FirstName = FirstName,
-                LastName = LastName,
-                Email = Email,
-                Phone = Phone,
-                City = City
-            };
-
-            _context.Contacts.Add(contact);
-            _context.SaveChanges();
-
-            AllContacts.Add(contact);
-            Contacts.Add(contact);
-
-            MessageBox.Show("Contact added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            ClearForm();
         }
 
         private void SaveContact()
         {
-            if (SelectedContact == null) return;
-
             if (!IsFormValid())
             {
                 MessageBox.Show("Please fill in First Name, Last Name and valid Email.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            SelectedContact.FirstName = FirstName;
-            SelectedContact.LastName = LastName;
-            SelectedContact.Email = Email;
-            SelectedContact.Phone = Phone;
-            SelectedContact.City = City;
+            if (SelectedContact == null)
+            {
+                var newContact = new Contact
+                {
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    Email = Email,
+                    Phone = Phone,
+                    City = City
+                };
+                _context.Contacts.Add(newContact);
+                _context.SaveChanges();
 
-            _context.SaveChanges();
+                AllContacts.Add(newContact);
+                Contacts.Add(newContact);
 
-            MessageBox.Show("Contact saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Contact added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                SelectedContact.FirstName = FirstName;
+                SelectedContact.LastName = LastName;
+                SelectedContact.Email = Email;
+                SelectedContact.Phone = Phone;
+                SelectedContact.City = City;
 
-            ClearForm();
+                _context.SaveChanges();
+
+                MessageBox.Show("Contact updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            ClearFormFields();
+            SelectedContact = null;
         }
 
         private void DeleteContact()
@@ -168,67 +160,28 @@ namespace MiniAddressBook.ViewModels
                 Contacts.Remove(SelectedContact);
 
                 MessageBox.Show("Contact deleted successfully!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                ClearForm();
+                ClearFormFields();
+                SelectedContact = null;
             }
         }
 
-        private void EditContact()
-        {
-            if (SelectedContact == null)
-            {
-                MessageBox.Show("Please select a contact first to edit.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
 
-            MessageBox.Show("You can now edit the selected contact. Make your changes and click Save.", "Edit Mode", MessageBoxButton.OK, MessageBoxImage.Information);
+        private void ClearFormFields()
+        {
+            FirstName = LastName = Email = Phone = City = string.Empty;
+            UpdateSaveState();
         }
 
         private void ClearForm()
         {
-            FirstName = "";
-            LastName = "";
-            Email = "";
-            Phone = "";
-            City = "";
-            SelectedContact = null;
-
-            CanSave = false; 
-        }
-
-        private void LoadSelectedContact()
-        {
-            if (SelectedContact == null) return;
-
-            FirstName = SelectedContact.FirstName;
-            LastName = SelectedContact.LastName;
-            Email = SelectedContact.Email;
-            Phone = SelectedContact.Phone;
-            City = SelectedContact.City;
-        }
-
-        private void FilterContacts()
-        {
-            if (string.IsNullOrWhiteSpace(SearchText))
-            {
-                Contacts.Clear();
-                foreach (var c in AllContacts) Contacts.Add(c);
-            }
-            else
-            {
-                var filtered = AllContacts.Where(c =>
-                    (!string.IsNullOrEmpty(c.FirstName) && c.FirstName.ToLower().Contains(SearchText.ToLower())) ||
-                    (!string.IsNullOrEmpty(c.LastName) && c.LastName.ToLower().Contains(SearchText.ToLower())) ||
-                    (!string.IsNullOrEmpty(c.Email) && c.Email.ToLower().Contains(SearchText.ToLower()))
-                ).ToList();
-
-                Contacts.Clear();
-                foreach (var c in filtered) Contacts.Add(c);
-            }
+            SelectedContact = null; 
+            ClearFormFields();      
         }
 
         private bool HasChanges()
         {
-            if (SelectedContact == null) return false;
+            if (SelectedContact == null)
+                return true;
 
             return FirstName != SelectedContact.FirstName ||
                    LastName != SelectedContact.LastName ||
@@ -255,8 +208,34 @@ namespace MiniAddressBook.ViewModels
 
         private void UpdateSaveState()
         {
-            CanSave = HasChanges() && IsFormValid();
+            CanSave = IsFormValid() && HasChanges();
+            CommandManager.InvalidateRequerySuggested(); 
         }
+
+        private void FilterContacts()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                Contacts.Clear();
+                foreach (var c in AllContacts)
+                    Contacts.Add(c);
+            }
+            else
+            {
+                var filtered = AllContacts.Where(c =>
+                    (!string.IsNullOrEmpty(c.FirstName) && c.FirstName.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                    (!string.IsNullOrEmpty(c.LastName) && c.LastName.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                    (!string.IsNullOrEmpty(c.Email) && c.Email.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                ).ToList();
+
+                Contacts.Clear();
+                foreach (var c in filtered)
+                    Contacts.Add(c);
+            }
+        }
+
+        
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
