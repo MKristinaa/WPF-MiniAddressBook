@@ -34,7 +34,6 @@ Omogućava korisniku da dodaje nove kontakte, menja postojeće, briše selektova
   - `phone` (opciono)
   - `city` (opciono)
 - Konekcioni string za MySQL treba podesiti u `App.config` (server, database, user, password).
-- Opcionalno, može se koristiti SQL skripta za kreiranje tabele sa početnim podacima.
 
 ## Pokretanje aplikacije
 
@@ -54,6 +53,7 @@ Omogućava korisniku da dodaje nove kontakte, menja postojeće, briše selektova
 - Selektovanjem kontakta iz tabele moguće je izvršiti izmenu ili brisanje.
 - Dugme **Save** je onemogućeno dok obavezna polja (**First Name**, **Last Name** i **Email**) nisu popunjena.
 - Dugme **Clear** prazni formu.
+
 
 
 
