@@ -53,6 +53,7 @@ Omogućava korisniku da dodaje nove kontakte, menja postojeće, briše selektova
 - Forma omogućava dodavanje novih kontakata.
 - Selektovanjem kontakta iz tabele moguće je izvršiti izmenu ili brisanje.
 - Dugme **Save** je onemogućeno dok obavezna polja (**First Name**, **Last Name** i **Email**) nisu popunjena.
-- Dugme **Clear** prazni formu za unos novog kontakta.
+- Dugme **Clear** prazni formu.
+
 
 
