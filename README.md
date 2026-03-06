@@ -55,6 +55,4 @@ Omogućava korisniku da dodaje nove kontakte, menja postojeće, briše selektova
 - Dugme **Save** je onemogućeno dok obavezna polja (**First Name**, **Last Name** i **Email**) nisu popunjena.
 - Dugme **Clear** prazni formu za unos novog kontakta.
 
-## Napomena
 
-- Obavezna polja su označena crvenom zvezdicom (*).
